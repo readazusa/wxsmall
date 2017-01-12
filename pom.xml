@@ -51,18 +51,15 @@
       <artifactId>spring-boot-starter-log4j2</artifactId>
     </dependency>
 
-
     <dependency>
       <groupId>com.alibaba</groupId>
       <artifactId>fastjson</artifactId>
       <version>1.2.22</version>
     </dependency>
-
   </dependencies>
 
   <build>
     <finalName>wxsmall</finalName>
-
     <plugins>
       <plugin>
         <groupId>org.springframework.boot</groupId>
