@@ -1,5 +1,11 @@
 server:
-  port: 80
+  port: 8080
   contextPath: /wx
-
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+#    type: com.alibaba.druid.pool.DruidDataSource
+#    username: root
+#    password: tang123
+#    url: jdbc:mysql://1551sp9557.imwork.net:3306/wx?useUnicode=true&characterEncoding=utf8&useSSL=true
 
