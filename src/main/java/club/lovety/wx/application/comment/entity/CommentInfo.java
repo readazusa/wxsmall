@@ -8,7 +8,7 @@ import club.lovety.wx.base.entity.BaseInfo;
  * author: 念梓
  * des:
  */
-public class ComentInfo extends BaseInfo {
+public class CommentInfo extends BaseInfo {
 
     private long relationUid;
 
