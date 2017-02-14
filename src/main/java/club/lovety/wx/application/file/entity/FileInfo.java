@@ -1,4 +1,4 @@
-package club.lovety.wx.file.entity;
+package club.lovety.wx.application.file.entity;
 
 import club.lovety.wx.base.entity.BaseInfo;
 
@@ -22,12 +22,9 @@ public class FileInfo extends BaseInfo {
 
     private String ip;
 
-    private String locationX;
-
-    private String locationY;
+    private String tempFilePath;
 
     private String type;  //哪一种业务上传的文件  0:宝宝秀 1:吐槽吧 2：宝宝秀评论 3:吐槽吧评论
-
 
     public String getUrl() {
         return url;
@@ -77,27 +74,19 @@ public class FileInfo extends BaseInfo {
         this.ip = ip;
     }
 
-    public String getLocationX() {
-        return locationX;
-    }
-
-    public void setLocationX(String locationX) {
-        this.locationX = locationX;
-    }
-
-    public String getLocationY() {
-        return locationY;
-    }
-
-    public void setLocationY(String locationY) {
-        this.locationY = locationY;
-    }
-
     public String getType() {
         return type;
     }
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getTempFilePath() {
+        return tempFilePath;
+    }
+
+    public void setTempFilePath(String tempFilePath) {
+        this.tempFilePath = tempFilePath;
     }
 }

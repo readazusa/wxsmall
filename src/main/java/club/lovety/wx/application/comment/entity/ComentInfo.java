@@ -1,4 +1,4 @@
-package club.lovety.wx.comment.entity;
+package club.lovety.wx.application.comment.entity;
 
 import club.lovety.wx.base.entity.BaseInfo;
 

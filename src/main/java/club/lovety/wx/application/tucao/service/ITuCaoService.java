@@ -1,4 +1,4 @@
-package club.lovety.wx.tucao.service;
+package club.lovety.wx.application.tucao.service;
 
 import club.lovety.wx.base.service.IService;
 import club.lovety.wx.tucao.entity.TuCaoInfo;

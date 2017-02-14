@@ -1,5 +1,6 @@
-package club.lovety.wx.tucao.controller;
+package club.lovety.wx.application.file.controller;
 
+import club.lovety.wx.base.controller.BaseController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,20 +13,13 @@ import javax.servlet.http.HttpServletRequest;
  * des:
  */
 @RestController
-@RequestMapping("tucao")
-public class TuCaoController {
+@RequestMapping("file")
+public class FileController extends BaseController {
 
-    @RequestMapping("page")
-    public Object  page(HttpServletRequest request){
+    @RequestMapping("upload")
+    public Object uploadFile(HttpServletRequest request){
         return null;
     }
-
-    @RequestMapping("add")
-    public Object doAdd(HttpServletRequest request){
-        return null;
-    }
-
-
 
 
 }

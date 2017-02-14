@@ -1,4 +1,4 @@
-package club.lovety.wx.tucao.dao;
+package club.lovety.wx.application.tucao.dao;
 
 import club.lovety.wx.base.dao.IDao;
 import club.lovety.wx.tucao.entity.TuCaoInfo;
