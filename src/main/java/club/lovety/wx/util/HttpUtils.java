@@ -23,8 +23,9 @@ import org.apache.http.impl.nio.client.HttpAsyncClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.nio.entity.NFileEntity;
 import org.apache.http.util.EntityUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 import java.io.*;
 import java.util.*;
@@ -41,7 +42,8 @@ import java.util.concurrent.Future;
  */
 public final class HttpUtils {
 
-    private static Logger log = LoggerFactory.getLogger(HttpUtils.class);
+    private static final Logger log = LogManager.getLogger(HttpUtils.class);
+
     public static HttpUtils httpUtils = null;
 
     private HttpUtils() {
