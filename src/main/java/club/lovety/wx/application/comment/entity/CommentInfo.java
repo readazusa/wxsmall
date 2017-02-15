@@ -20,6 +20,11 @@ public class CommentInfo extends BaseInfo {
 
     private String nickName;
 
+    private String avatarUrl;  //头像
+
+
+    private long parentUid;  //
+
     public long getRelationUid() {
         return relationUid;
     }
@@ -58,5 +63,21 @@ public class CommentInfo extends BaseInfo {
 
     public void setNickName(String nickName) {
         this.nickName = nickName;
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
+    }
+
+    public long getParentUid() {
+        return parentUid;
+    }
+
+    public void setParentUid(long parentUid) {
+        this.parentUid = parentUid;
     }
 }
