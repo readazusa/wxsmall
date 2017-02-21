@@ -5,7 +5,7 @@ import club.lovety.wx.application.file.service.IFileService;
 import club.lovety.wx.base.entity.BasePageInfo;
 import club.lovety.wx.base.entity.BaseSearchInfo;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartRequest;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,13 +19,10 @@ import javax.servlet.http.HttpServletRequest;
 public class FileServiceImpl implements IFileService {
 
     @Override
-    public int upload(HttpServletRequest request) {
-        MultipartRequest multipartRequest = (MultipartRequest) request;
+    public String upload(HttpServletRequest request) {
+        MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
 
-
-
-
-        return 0;
+        return null;
     }
 
     @Override

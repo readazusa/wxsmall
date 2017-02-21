@@ -1,9 +1,8 @@
-package club.lovety.wx.application.tucao.dao.impl;
+package club.lovety.wx.application.file.dao.impl;
 
-import club.lovety.wx.application.tucao.dao.ITuCaoDao;
-import club.lovety.wx.application.tucao.entity.TuCaoInfo;
+import club.lovety.wx.application.file.dao.IFileDao;
+import club.lovety.wx.application.file.entity.FileInfo;
 import club.lovety.wx.base.entity.BaseSearchInfo;
-
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
@@ -12,13 +11,13 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * Created by 念梓  on 2017/2/14.
+ * Created by 念梓  on 2017/2/21.
  * Email:sunmch@163.com
  * author: 念梓
  * des:
  */
 @Repository
-public class TuCaoDaoImpl extends SqlSessionDaoSupport implements ITuCaoDao {
+public class FileDaoImpl extends SqlSessionDaoSupport implements IFileDao {
 
     @Resource
     @Override
@@ -27,17 +26,17 @@ public class TuCaoDaoImpl extends SqlSessionDaoSupport implements ITuCaoDao {
     }
 
     @Override
-    public int save(TuCaoInfo tuCaoInfo) {
+    public int save(FileInfo fileInfo) {
         return 0;
     }
 
     @Override
-    public List<TuCaoInfo> queryList(BaseSearchInfo<TuCaoInfo> baseSearchInfo) {
+    public List<FileInfo> queryList(BaseSearchInfo<FileInfo> baseSearchInfo) {
         return null;
     }
 
     @Override
-    public int queryTotalCount(TuCaoInfo tuCaoInfo) {
+    public int queryTotalCount(FileInfo fileInfo) {
         return 0;
     }
 }

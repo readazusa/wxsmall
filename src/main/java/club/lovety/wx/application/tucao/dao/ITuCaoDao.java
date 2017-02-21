@@ -1,7 +1,8 @@
 package club.lovety.wx.application.tucao.dao;
 
+import club.lovety.wx.application.tucao.entity.TuCaoInfo;
 import club.lovety.wx.base.dao.IDao;
-import club.lovety.wx.tucao.entity.TuCaoInfo;
+
 
 /**
  * Created by 念梓  on 2017/2/14.

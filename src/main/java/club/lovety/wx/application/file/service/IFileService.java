@@ -13,6 +13,6 @@ import javax.servlet.http.HttpServletRequest;
  */
 public interface IFileService extends IService<FileInfo> {
 
-    public int upload(HttpServletRequest request);
+    public String upload(HttpServletRequest request);
 
 }

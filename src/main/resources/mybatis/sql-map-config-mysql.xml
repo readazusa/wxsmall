@@ -14,10 +14,13 @@
         <typeAlias type="club.lovety.wx.application.tucao.entity.TuCaoInfo" alias="TuCaoInfo"/>
         <typeAlias type="club.lovety.wx.base.entity.BaseSearchInfo" alias="BaseSearchInfo"/>
         <typeAlias type="club.lovety.wx.base.entity.BasePageInfo" alias="BasePageInfo" />
+        <typeAlias type="club.lovety.wx.application.file.entity.FileInfo" alias="FileInfo" />
     </typeAliases>
 
     <mappers>
         <mapper resource="club/lovety/wx/application/tucao/entity/mybatis/TuCaoInfo.xml"></mapper>
+        <mapper resource="club/lovety/wx/application/file/entity/mybatis/FileInfo.xml"></mapper>
     </mappers>
+
 </configuration>
  

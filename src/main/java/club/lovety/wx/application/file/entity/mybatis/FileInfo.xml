@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="FileInfo">
+
+    <insert id="save" parameterType="FileInfo">
+        insert into t_wxsmall_file(uid,url,contentType,size,suffix,name,ip,tempFilePath,type,createTime,updateTime,syscreatetime)
+        VALUES(#{uid},#{url},#{contentType},#{size},#{suffix},#{name},#{ip},#{tempFilePath},#{type},#{createTime},#{updateTime},now())
+    </insert>
+
+
+
+
+</mapper>

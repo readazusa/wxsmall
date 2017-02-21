@@ -1,8 +1,9 @@
 package club.lovety.wx.application.tucao.controller;
 
+import club.lovety.wx.application.tucao.entity.TuCaoInfo;
+import club.lovety.wx.application.tucao.service.ITuCaoService;
 import club.lovety.wx.base.controller.BaseController;
-import club.lovety.wx.tucao.entity.TuCaoInfo;
-import club.lovety.wx.tucao.service.ITuCaoService;
+
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

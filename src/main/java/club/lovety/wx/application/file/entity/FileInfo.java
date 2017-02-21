@@ -22,7 +22,7 @@ public class FileInfo extends BaseInfo {
 
     private String ip;
 
-    private String tempFilePath;
+    private String tempFilePath;  //微信客户端的临时路径
 
     private String type;  //哪一种业务上传的文件  0:宝宝秀 1:吐槽吧 2：宝宝秀评论 3:吐槽吧评论
 
