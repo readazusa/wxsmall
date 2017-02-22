@@ -8,6 +8,9 @@ package club.lovety.wx.common;
  */
 public final class Constants {
 
+
+    public static final String UPLOAD_FILE_NAME="filename";
+
     public static final String UPLOAD_FILE_PATH="/upload/";
 
     public static final String DOWNLAOD_FILE_PATH="/wechat/download/";
@@ -19,6 +22,10 @@ public final class Constants {
     public static final String PORTAL_JSSDK_URL="http://www.sunmingchun.net/weixin/portal/index.htm";
 
     public static final String PORTAL_PAY_JSSDK_URL="http://www.sunmingchun.net/weixin/pay/create.htm";
+
+    public static  final String FILE_SERVICE_URL="http://1551sp9557.imwork.net:5000/webfileservice/api/upload";
+
+
 
 
 

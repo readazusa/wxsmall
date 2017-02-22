@@ -32,11 +32,11 @@
         <Root level="DEBUG">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="File"></AppenderRef>
-            <AppenderRef ref="Mail"/>
         </Root>
-        <!--<logger name="club.lovety.wx" level="debug" additivity="false">-->
-            <!--<appender-ref ref="Mail"/>-->
-            <!--<appender-ref ref="Console"/>-->
-        <!--</logger>-->
+        <logger name="club.lovety.wx" level="ERROR" additivity="false">
+            <AppenderRef ref="Mail"/>
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="File"></AppenderRef>
+        </logger>
     </Loggers>
 </Configuration>

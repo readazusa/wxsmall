@@ -4,6 +4,7 @@
 
 <mapper namespace="FileInfo">
 
+
     <insert id="save" parameterType="FileInfo">
         insert into t_wxsmall_file(uid,url,contentType,size,suffix,name,ip,tempFilePath,type,createTime,updateTime,syscreatetime)
         VALUES(#{uid},#{url},#{contentType},#{size},#{suffix},#{name},#{ip},#{tempFilePath},#{type},#{createTime},#{updateTime},now())

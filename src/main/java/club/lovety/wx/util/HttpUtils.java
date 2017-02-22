@@ -16,6 +16,7 @@ import org.apache.http.entity.InputStreamEntity;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.mime.MultipartEntity;
 import org.apache.http.entity.mime.content.FileBody;
+import org.apache.http.entity.mime.content.InputStreamBody;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
@@ -25,7 +26,6 @@ import org.apache.http.nio.entity.NFileEntity;
 import org.apache.http.util.EntityUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 
 import java.io.*;
 import java.util.*;
@@ -88,25 +88,7 @@ public final class HttpUtils {
             httpPost.setEntity(fileEntity);
         }
         StringBuffer sb = new StringBuffer();
-        try {
-            CloseableHttpResponse closeableHttpResponse = httpclient.execute(httpPost);
-            InputStream inputStream = closeableHttpResponse.getEntity().getContent();
-            Reader reader = new InputStreamReader(inputStream, "UTF-8");
-            BufferedReader bufferedReader = new BufferedReader(reader);
-            String str = null;
-            while ((str = bufferedReader.readLine()) != null) {
-                sb.append(str);
-            }
-        } catch (IOException e) {
-            log.error("上传文件异常,获取地址：{}失败，错误信息如下：{}", url, e.getMessage());
-        } finally {
-            try {
-                httpclient.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return sb.toString();
+        return loadResult(httpclient, httpPost);
     }
 
 
@@ -116,25 +98,7 @@ public final class HttpUtils {
         InputStreamEntity inputStreamEntity = new InputStreamEntity(updateInputStream, ContentType.MULTIPART_FORM_DATA);
         httpPost.setEntity(inputStreamEntity);
         StringBuffer sb = new StringBuffer();
-        try {
-            CloseableHttpResponse closeableHttpResponse = httpclient.execute(httpPost);
-            InputStream inputStream = closeableHttpResponse.getEntity().getContent();
-            Reader reader = new InputStreamReader(inputStream, "UTF-8");
-            BufferedReader bufferedReader = new BufferedReader(reader);
-            String str = null;
-            while ((str = bufferedReader.readLine()) != null) {
-                sb.append(str);
-            }
-        } catch (IOException e) {
-            log.error("表单文件流异常,获取地址：{}失败，错误信息如下：{}", url, e.getMessage());
-        } finally {
-            try {
-                httpclient.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return sb.toString();
+        return loadResult(httpclient, httpPost);
     }
 
     public String post(String url, Map<String, String> params) {
@@ -154,28 +118,10 @@ public final class HttpUtils {
             }
             httpPost.setEntity(uefEntity);
         }
-        try {
-            CloseableHttpResponse closeableHttpResponse = httpclient.execute(httpPost);
-            InputStream inputStream = closeableHttpResponse.getEntity().getContent();
-            Reader reader = new InputStreamReader(inputStream, "UTF-8");
-            BufferedReader bufferedReader = new BufferedReader(reader);
-            String str = null;
-            while ((str = bufferedReader.readLine()) != null) {
-                sb.append(str);
-            }
-        } catch (IOException e) {
-            log.error("IOException：异常,获取地址：{}失败，错误信息如下：{}", url, e.getMessage());
-        } finally {
-            try {
-                httpclient.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return sb.toString();
+        return loadResult(httpclient, httpPost);
     }
 
-    public String post(String url,Object data){
+    public String post(String url, Object data) {
         CloseableHttpClient httpclient = HttpClients.createDefault();
         HttpPost httpPost = new HttpPost(url);
         httpPost.setEntity(new StringEntity(JSON.toJSONString(data), ContentType.APPLICATION_JSON));
@@ -195,27 +141,52 @@ public final class HttpUtils {
         } catch (IOException e) {
             e.printStackTrace();
             return null;
-        }finally {
+        } finally {
             closeAll(httpclient);
         }
     }
 
 
-    public String postFormFile(String url, Map<String, File> params) {
+    public String postFormFile(String url, Map<String, File> params,String fileSuffixName) {
         CloseableHttpClient httpclient = HttpClients.createDefault();
         HttpPost httpPost = new HttpPost(url);
+        httpPost.addHeader("suffix",fileSuffixName);
         StringBuffer sb = new StringBuffer();
         if (params != null && params.size() > 0) {  //当有查询条件的时候
-
             MultipartEntity multipartEntity = new MultipartEntity();
             for (String key : params.keySet()) {
                 File file = params.get(key);
-                FileBody fileBody = new FileBody(file,ContentType.create("image/png"));
-                log.debug("文件名称:{},文件长度:{},文件类型:{}",fileBody.getFilename(),fileBody.getContentLength(),fileBody.getContentType());
-                multipartEntity.addPart(key,fileBody);
+                FileBody fileBody = new FileBody(file, ContentType.DEFAULT_BINARY);
+                log.debug("文件名称:{},文件长度:{},文件类型:{}", fileBody.getFilename(), fileBody.getContentLength(), fileBody.getContentType());
+                multipartEntity.addPart(key, fileBody);
             }
             httpPost.setEntity(multipartEntity);
         }
+        return loadResult(httpclient, httpPost);
+    }
+
+    public String postFormInputstream(String url, Map<String, InputStream> params,String fileSuffixName) {
+        CloseableHttpClient httpclient = HttpClients.createDefault();
+        HttpPost httpPost = new HttpPost(url);
+        httpPost.addHeader("suffix",fileSuffixName);
+        StringBuffer sb = new StringBuffer();
+        if (params != null && params.size() > 0) {  //当有查询条件的时候
+            MultipartEntity multipartEntity = new MultipartEntity();
+            for (String key : params.keySet()) {
+                InputStream inputStream = params.get(key);
+                InputStreamBody inputStreamBody = new InputStreamBody(inputStream,key);
+//                log.debug("文件名称:{},文件长度:{},文件类型:{}", fileBody.getFilename(), fileBody.getContentLength(), fileBody.getContentType());
+                multipartEntity.addPart(key, inputStreamBody);
+            }
+            httpPost.setEntity(multipartEntity);
+        }
+        return loadResult(httpclient, httpPost);
+    }
+
+
+
+    private String loadResult(CloseableHttpClient httpclient, HttpPost httpPost) {
+        StringBuffer sb = new StringBuffer();
         try {
             CloseableHttpResponse closeableHttpResponse = httpclient.execute(httpPost);
             InputStream inputStream = closeableHttpResponse.getEntity().getContent();
@@ -226,7 +197,7 @@ public final class HttpUtils {
                 sb.append(str);
             }
         } catch (IOException e) {
-            log.error("IOException：异常,获取地址：{}失败，错误信息如下：{}", url, e.getMessage());
+            log.error("IOException：异常,错误信息如下：{}", e.getMessage());
         } finally {
             try {
                 httpclient.close();
@@ -251,7 +222,7 @@ public final class HttpUtils {
             while ((str = bufferedReader.readLine()) != null) {
                 sb.append(str);
             }
-            log.info("下载的文件内容: {}",sb.toString());
+            log.info("下载的文件内容: {}", sb.toString());
 
         } catch (IOException e) {
             log.error("获取地址：{}失败，错误信息如下：{}", url, e.getMessage());
@@ -268,6 +239,7 @@ public final class HttpUtils {
 
     /**
      * 下载服务器上面的文件
+     *
      * @param url
      * @param contentType
      * @return
@@ -289,7 +261,7 @@ public final class HttpUtils {
                 if (!parentFile.exists()) {
                     parentFile.mkdirs();
                 }
-                String fileName = UuidUtils.getUpperUuid()+".jpg";
+                String fileName = UuidUtils.getUpperUuid() + ".jpg";
                 File file = new File(parentFile, fileName);
                 FileUtils.copyInputStreamToFile(inputStream, file);
                 fileId = sb.append(File.separator).append(fileName).toString();
@@ -308,7 +280,6 @@ public final class HttpUtils {
         return fileId;
     }
 
-
     /**
      * 参数为json
      *
@@ -324,39 +295,15 @@ public final class HttpUtils {
             httpPost.setEntity(jsonEntity);
         }
         StringBuffer sb = new StringBuffer();
-        try {
-            CloseableHttpResponse closeableHttpResponse = httpclient.execute(httpPost);
-            InputStream inputStream = closeableHttpResponse.getEntity().getContent();
-            Reader reader = new InputStreamReader(inputStream, "UTF-8");
-            BufferedReader bufferedReader = new BufferedReader(reader);
-            String str = null;
-            while ((str = bufferedReader.readLine()) != null) {
-                sb.append(str);
-            }
-        } catch (IOException e) {
-            log.error("IOException：异常,获取地址：{}失败，错误信息如下：{}", url, e.getMessage());
-        } finally {
-            try {
-                httpclient.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return sb.toString();
+        return loadResult(httpclient, httpPost);
     }
 
-    private void closeAll(CloseableHttpClient httpClient){
+    private void closeAll(CloseableHttpClient httpClient) {
         try {
             httpClient.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-    public static void main(String[] args) {
-        HttpUtils httpUtils = HttpUtils.getInstance();
-        httpUtils.get("https://open.weixin.qq.com/");
-    }
-
 
 }
