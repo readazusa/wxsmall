@@ -27,6 +27,11 @@ public final class Constants {
 
 
 
+    public static final String UPLOAD_FILE_SUCC_CODE="00000";
+
+    public static final String UPLOAD_FILE_HTTP_ERROR_CODE="00001";  //上传文件到服务器失败
+
+    public static final String UPLOAD_FILE_IO_ERROR_CODE="00002";  //上传文件IO错误
 
 
 

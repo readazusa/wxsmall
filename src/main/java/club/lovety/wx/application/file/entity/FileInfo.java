@@ -14,7 +14,7 @@ public class FileInfo extends BaseInfo {
 
     private String contentType;
 
-    private int size;
+    private long size;
 
     private String suffix;
 
@@ -42,11 +42,11 @@ public class FileInfo extends BaseInfo {
         this.contentType = contentType;
     }
 
-    public int getSize() {
+    public long getSize() {
         return size;
     }
 
-    public void setSize(int size) {
+    public void setSize(long size) {
         this.size = size;
     }
 
