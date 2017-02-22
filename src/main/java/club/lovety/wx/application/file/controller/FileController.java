@@ -19,6 +19,8 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("file")
 public class FileController extends BaseController {
 
+
+
     @Resource
     private IFileService fileService;
 
