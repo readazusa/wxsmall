@@ -36,7 +36,7 @@ public class FileController extends BaseController {
         Result result = new Result();
         try {
             FileInfo fileInfo = fileService.upload(request);
-            result.setObj(fileInfo);
+            result.setData(fileInfo);
         } catch (IOException e) {
             log.error("上传文件失败,失败信息如下： ", e);
             result.setCode(Constants.UPLOAD_FILE_IO_ERROR_CODE);

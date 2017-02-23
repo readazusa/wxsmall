@@ -33,6 +33,7 @@ public class TuCaoController extends BaseController {
     @RequestMapping("add")
     public Object doAdd(@RequestBody TuCaoInfo tuCaoInfo, HttpServletRequest request){
         tuCaoInfo.setIp(this.getRequestIp(request));
+
         return null;
     }
 

@@ -87,7 +87,7 @@ public class FileServiceImpl implements IFileService {
         }else{
             result= JSON.parseObject(uploadResult,Result.class);
         }
-        return result.getObj().toString();
+        return result.getData().toString();
     }
 
 }
