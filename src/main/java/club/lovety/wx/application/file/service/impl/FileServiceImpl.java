@@ -6,6 +6,7 @@ import club.lovety.wx.application.file.service.IFileService;
 import club.lovety.wx.base.entity.BasePageInfo;
 import club.lovety.wx.base.entity.BaseSearchInfo;
 import club.lovety.wx.common.Constants;
+import club.lovety.wx.common.IdWorker;
 import club.lovety.wx.common.MyHttpException;
 import club.lovety.wx.common.Result;
 import club.lovety.wx.util.HttpUtils;
@@ -42,8 +43,10 @@ public class FileServiceImpl implements IFileService {
     @Override
     public FileInfo upload(HttpServletRequest request) throws IOException, MyHttpException {
         FileInfo fileInfo = new FileInfo();
+        fileInfo.setUid(IdWorker.instance.getId());
         fileInfo.setIp(request.getHeader("x-forwarded-for") == null ? request.getRemoteAddr() : request.getHeader("x-forwarded-for"));
         fileInfo.setUpdateTime(new Date());
+        fileInfo.setCreateTime(new Date());
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
         MultipartFile multipartFile = multipartRequest.getFile(Constants.UPLOAD_FILE_NAME);
         fileInfo.setContentType(multipartRequest.getContentType());

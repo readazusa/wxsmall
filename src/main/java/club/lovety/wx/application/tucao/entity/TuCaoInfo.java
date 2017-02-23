@@ -31,6 +31,7 @@ public class TuCaoInfo extends BaseInfo{
 
     private String locationAddress;  //位置详细的地址信息
 
+    private String fileId;  //上传图片时返回页面的文件信息uid以&拼接的字符串
 
     public String getContent() {
         return content;
@@ -102,5 +103,13 @@ public class TuCaoInfo extends BaseInfo{
 
     public void setLocationAddress(String locationAddress) {
         this.locationAddress = locationAddress;
+    }
+
+    public String getFileId() {
+        return fileId;
+    }
+
+    public void setFileId(String fileId) {
+        this.fileId = fileId;
     }
 }

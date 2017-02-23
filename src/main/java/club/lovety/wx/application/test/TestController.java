@@ -1,5 +1,6 @@
 package club.lovety.wx.application.test;
 
+import club.lovety.wx.config.DbConfig;
 import club.lovety.wx.config.InitConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
@@ -17,7 +18,6 @@ import javax.annotation.Resource;
  */
 @RestController
 @RequestMapping("test")
-@PropertySource("classpath:config/db.properties")
 public class TestController {
 
     @Autowired
@@ -25,6 +25,9 @@ public class TestController {
 
     @Resource
     private InitConfig initConfig;
+
+    @Resource
+    private DbConfig dbConfig;
 
     @RequestMapping("init")
     public Object test(){

@@ -27,7 +27,7 @@ public class FileDaoImpl extends SqlSessionDaoSupport implements IFileDao {
 
     @Override
     public int save(FileInfo fileInfo) {
-        return 0;
+        return this.getSqlSession().insert("FileInfo.save",fileInfo);
     }
 
     @Override

@@ -7,8 +7,16 @@
 
     <insert id="save" parameterType="ContentVsFileInfo">
 
-      insert into t_wxsmall_content_vs_file(contentId,fileId,createTime,updateTime,syscreatetime)
-      values(#{contentId},#{fileId},#{createTime},#{updateTime},now())
+      insert into t_wxsmall_content_vs_file(uid,contentId,fileId,createTime,updateTime,syscreatetime)
+      values(#{uid},#{contentId},#{fileId},#{createTime},#{updateTime},now())
+    </insert>
+
+    <insert id="batchSave">
+        insert into t_wxsmall_content_vs_file(uid,contentId,fileId,createTime,updateTime,syscreatetime)
+        VALUES
+        <foreach collection="list" separator="," index="contentfile">
+            (#{contentfile.uid},#{contentfile.contentId},#{contentfile.fileId},#{contentfile.createTime},#{contentfile.updateTime},now())
+        </foreach>
     </insert>
 
 

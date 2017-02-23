@@ -30,6 +30,7 @@ public class ContentVsFileDaoImpl extends SqlSessionDaoSupport implements IConte
         return this.getSqlSession().insert("ContentVsFileInfo.save",contentVsFileInfo);
     }
 
+
     @Override
     public List<ContentVsFileInfo> queryList(BaseSearchInfo<ContentVsFileInfo> baseSearchInfo) {
         return null;
@@ -38,5 +39,10 @@ public class ContentVsFileDaoImpl extends SqlSessionDaoSupport implements IConte
     @Override
     public int queryTotalCount(ContentVsFileInfo contentVsFileInfo) {
         return 0;
+    }
+
+    @Override
+    public int batchSave(List<ContentVsFileInfo> contentVsFileInfoList) {
+        return this.getSqlSession().insert("ContentVsFileInfo.batchSave",contentVsFileInfoList);
     }
 }
