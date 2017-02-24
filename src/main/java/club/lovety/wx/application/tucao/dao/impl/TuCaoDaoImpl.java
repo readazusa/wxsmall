@@ -40,4 +40,9 @@ public class TuCaoDaoImpl extends SqlSessionDaoSupport implements ITuCaoDao {
     public int queryTotalCount(TuCaoInfo tuCaoInfo) {
         return 0;
     }
+
+    @Override
+    public TuCaoInfo view(long uid) {
+        return null;
+    }
 }

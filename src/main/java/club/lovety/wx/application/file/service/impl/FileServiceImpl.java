@@ -90,4 +90,8 @@ public class FileServiceImpl implements IFileService {
         return result.getData().toString();
     }
 
+    @Override
+    public FileInfo view(long uid) {
+        return null;
+    }
 }

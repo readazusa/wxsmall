@@ -39,4 +39,9 @@ public class FileDaoImpl extends SqlSessionDaoSupport implements IFileDao {
     public int queryTotalCount(FileInfo fileInfo) {
         return 0;
     }
+
+    @Override
+    public FileInfo view(long uid) {
+        return null;
+    }
 }

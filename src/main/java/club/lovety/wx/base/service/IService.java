@@ -15,4 +15,6 @@ public interface IService<T> {
 
     public BasePageInfo<T> queryBasePageInfo(BaseSearchInfo<T> baseSearchInfo);
 
+
+    public T view(long uid);
 }

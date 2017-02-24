@@ -44,4 +44,9 @@ public class ContentVsFileDaoImpl extends SqlSessionDaoSupport implements IConte
     public int batchSave(List<ContentVsFileInfo> contentVsFileInfoList) {
         return this.getSqlSession().insert("ContentVsFileInfo.batchSave",contentVsFileInfoList);
     }
+
+    @Override
+    public ContentVsFileInfo view(long uid) {
+        return null;
+    }
 }

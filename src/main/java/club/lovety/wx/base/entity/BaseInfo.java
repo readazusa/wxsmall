@@ -18,6 +18,9 @@ public class BaseInfo {
 
     private int flag;  //表示  0:正常,1:删除  2:禁用
 
+    private String uids;
+
+
     public long getUid() {
         return uid;
     }
@@ -48,5 +51,13 @@ public class BaseInfo {
 
     public void setFlag(int flag) {
         this.flag = flag;
+    }
+
+    public String getUids() {
+        return String.valueOf(uid);
+    }
+
+    public void setUids(String uids) {
+        this.uids = uids;
     }
 }

@@ -18,4 +18,5 @@ public interface IDao<T> {
 
     public int queryTotalCount(T t);
 
+    public T view(long uid);
 }

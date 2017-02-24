@@ -31,4 +31,9 @@ public class ContentVsFileServiceImpl implements IContentVsFileService {
     public BasePageInfo<ContentVsFileInfo> queryBasePageInfo(BaseSearchInfo<ContentVsFileInfo> baseSearchInfo) {
         return null;
     }
+
+    @Override
+    public ContentVsFileInfo view(long uid) {
+        return null;
+    }
 }

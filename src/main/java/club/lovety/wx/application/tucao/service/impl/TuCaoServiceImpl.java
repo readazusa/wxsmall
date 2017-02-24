@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -64,7 +65,6 @@ public class TuCaoServiceImpl implements ITuCaoService {
         return contentVsFileInfos;
     }
 
-
     @Override
     public BasePageInfo<TuCaoInfo> queryBasePageInfo(BaseSearchInfo<TuCaoInfo> baseSearchInfo) {
         BasePageInfo<TuCaoInfo> basePageInfo = new BasePageInfo<>();
@@ -74,5 +74,20 @@ public class TuCaoServiceImpl implements ITuCaoService {
         basePageInfo.setData(tuCaoInfos);
         basePageInfo.setData(tuCaoInfos);
         return basePageInfo;
+    }
+
+
+    @Override
+    public BasePageInfo<TuCaoInfo> queryBasePageInfo(HttpServletRequest request) {
+
+
+
+
+        return null;
+    }
+
+    @Override
+    public TuCaoInfo view(long uid) {
+        return null;
     }
 }

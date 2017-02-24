@@ -2,6 +2,8 @@ package club.lovety.wx.application.tucao.entity;
 
 import club.lovety.wx.base.entity.BaseInfo;
 
+import java.util.List;
+
 /**
  * Created by 念梓  on 2017/2/14.
  * Email:sunmch@163.com
@@ -32,6 +34,11 @@ public class TuCaoInfo extends BaseInfo{
     private String locationAddress;  //位置详细的地址信息
 
     private String fileId;  //上传图片时返回页面的文件信息uid以&拼接的字符串
+
+    private List<String> fileUrls;
+
+    private int fileUrlSize;
+
 
     public String getContent() {
         return content;
@@ -113,5 +120,19 @@ public class TuCaoInfo extends BaseInfo{
         this.fileId = fileId;
     }
 
+    public List<String> getFileUrls() {
+        return fileUrls;
+    }
 
+    public void setFileUrls(List<String> fileUrls) {
+        this.fileUrls = fileUrls;
+    }
+
+    public int getFileUrlSize() {
+        return fileUrlSize;
+    }
+
+    public void setFileUrlSize(int fileUrlSize) {
+        this.fileUrlSize = fileUrlSize;
+    }
 }
