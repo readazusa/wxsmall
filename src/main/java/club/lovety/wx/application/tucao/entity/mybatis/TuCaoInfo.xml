@@ -9,8 +9,8 @@
     </sql>
 
     <insert id="save" parameterType="TuCaoInfo">
-        insert into t_wxsmall_tucao(uid,content,ip,nickName,actualLatitude,actualLongitude,latitude,longitude,locationName,locationAddress,createTime,updateTime)
-        values(#{uid},#{content},#{ip},#{nickName},#{actualLatitude},#{actualLongitude},#{latitude},#{longitude},#{locationName},#{locationAddress},#{createTime},#{updateTime})
+        insert into t_wxsmall_tucao(uid,content,ip,nickName,actualLatitude,actualLongitude,latitude,longitude,locationName,locationAddress,createTime,updateTime,syscreatetime)
+        values(#{uid},#{content},#{ip},#{nickName},#{actualLatitude},#{actualLongitude},#{latitude},#{longitude},#{locationName},#{locationAddress},#{createTime},#{updateTime},now())
     </insert>
 
     <select id="queryList" parameterType="BaseSearchInfo" resultType="TuCaoInfo">

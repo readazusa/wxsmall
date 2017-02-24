@@ -28,7 +28,7 @@ public class TuCaoDaoImpl extends SqlSessionDaoSupport implements ITuCaoDao {
 
     @Override
     public int save(TuCaoInfo tuCaoInfo) {
-        return 0;
+        return this.getSqlSession().insert("TuCaoInfo.save",tuCaoInfo);
     }
 
     @Override

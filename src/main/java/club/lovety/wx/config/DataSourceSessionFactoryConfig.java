@@ -33,6 +33,7 @@ public class DataSourceSessionFactoryConfig {
         druidDataSource.setUrl(dbConfig.getUrl());
         druidDataSource.setUsername(dbConfig.getUsername());
         druidDataSource.setPassword(dbConfig.getPassword());
+//        druidDataSource.
         return druidDataSource;
     }
 

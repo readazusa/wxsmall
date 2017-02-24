@@ -8,6 +8,7 @@ import club.lovety.wx.application.tucao.service.ITuCaoService;
 import club.lovety.wx.base.entity.BasePageInfo;
 import club.lovety.wx.base.entity.BaseSearchInfo;
 import club.lovety.wx.common.IdWorker;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,22 +40,26 @@ public class TuCaoServiceImpl implements ITuCaoService {
         tuCaoInfo.setCreateTime(new Date());
         tuCaoInfo.setUpdateTime(new Date());
         List<ContentVsFileInfo> contentVsFileInfos = getContentVsFileInfos(tcId, tuCaoInfo.getFileId());
-        contentVsFileDao.batchSave(contentVsFileInfos);
+        if(contentVsFileInfos.size()>0){
+            contentVsFileDao.batchSave(contentVsFileInfos);
+        }
         return tuCaoDao.save(tuCaoInfo);
     }
 
 
     private List<ContentVsFileInfo> getContentVsFileInfos(long contentId, String fileId) {
         List<ContentVsFileInfo> contentVsFileInfos = new ArrayList<>();
-        String[] fileIds = fileId.split("&");
-        for (int index = 0; index < fileIds.length; index++) {
-            ContentVsFileInfo contentVsFileInfo = new ContentVsFileInfo();
-            contentVsFileInfo.setCreateTime(new Date());
-            contentVsFileInfo.setUid(IdWorker.instance.getId());
-            contentVsFileInfo.setFileId(Integer.parseInt(fileIds[index]));
-            contentVsFileInfo.setContentId(contentId);
-            contentVsFileInfo.setUpdateTime(new Date());
-            contentVsFileInfos.add(contentVsFileInfo);
+        if (StringUtils.isNotBlank(fileId)) {
+            String[] fileIds = fileId.split("&");
+            for (int index = 0; index < fileIds.length; index++) {
+                ContentVsFileInfo contentVsFileInfo = new ContentVsFileInfo();
+                contentVsFileInfo.setCreateTime(new Date());
+                contentVsFileInfo.setUid(IdWorker.instance.getId());
+                contentVsFileInfo.setFileId(Long.parseLong(fileIds[index]));
+                contentVsFileInfo.setContentId(contentId);
+                contentVsFileInfo.setUpdateTime(new Date());
+                contentVsFileInfos.add(contentVsFileInfo);
+            }
         }
         return contentVsFileInfos;
     }

@@ -14,7 +14,7 @@
     <insert id="batchSave">
         insert into t_wxsmall_content_vs_file(uid,contentId,fileId,createTime,updateTime,syscreatetime)
         VALUES
-        <foreach collection="list" separator="," index="contentfile">
+        <foreach collection="list" separator="," item="contentfile">
             (#{contentfile.uid},#{contentfile.contentId},#{contentfile.fileId},#{contentfile.createTime},#{contentfile.updateTime},now())
         </foreach>
     </insert>

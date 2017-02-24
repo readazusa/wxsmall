@@ -112,4 +112,6 @@ public class TuCaoInfo extends BaseInfo{
     public void setFileId(String fileId) {
         this.fileId = fileId;
     }
+
+
 }

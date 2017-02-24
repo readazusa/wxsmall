@@ -30,7 +30,6 @@ public class ContentVsFileDaoImpl extends SqlSessionDaoSupport implements IConte
         return this.getSqlSession().insert("ContentVsFileInfo.save",contentVsFileInfo);
     }
 
-
     @Override
     public List<ContentVsFileInfo> queryList(BaseSearchInfo<ContentVsFileInfo> baseSearchInfo) {
         return null;
