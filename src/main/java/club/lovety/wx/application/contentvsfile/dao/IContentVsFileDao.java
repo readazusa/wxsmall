@@ -15,4 +15,6 @@ public interface IContentVsFileDao extends IDao<ContentVsFileInfo> {
 
     public int batchSave(List<ContentVsFileInfo> contentVsFileInfoList);
 
+
+
 }

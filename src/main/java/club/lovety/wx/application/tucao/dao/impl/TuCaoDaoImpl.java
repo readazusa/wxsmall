@@ -32,7 +32,7 @@ public class TuCaoDaoImpl extends SqlSessionDaoSupport implements ITuCaoDao {
     }
 
     @Override
-    public List<TuCaoInfo> queryList(BaseSearchInfo<TuCaoInfo> baseSearchInfo) {
+    public List<TuCaoInfo> queryPage(BaseSearchInfo<TuCaoInfo> baseSearchInfo) {
         return null;
     }
 

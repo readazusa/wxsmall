@@ -41,7 +41,7 @@ public class TuCaoServiceImpl implements ITuCaoService {
         tuCaoInfo.setCreateTime(new Date());
         tuCaoInfo.setUpdateTime(new Date());
         List<ContentVsFileInfo> contentVsFileInfos = getContentVsFileInfos(tcId, tuCaoInfo.getFileId());
-        if(contentVsFileInfos.size()>0){
+        if (contentVsFileInfos.size() > 0) {
             contentVsFileDao.batchSave(contentVsFileInfos);
         }
         return tuCaoDao.save(tuCaoInfo);
@@ -70,8 +70,8 @@ public class TuCaoServiceImpl implements ITuCaoService {
         BasePageInfo<TuCaoInfo> basePageInfo = new BasePageInfo<>();
         basePageInfo.setPageIndex(baseSearchInfo.getPageIndex());
         int totalCount = tuCaoDao.queryTotalCount(baseSearchInfo.getT());
-        List<TuCaoInfo> tuCaoInfos = tuCaoDao.queryList(baseSearchInfo);
-        basePageInfo.setData(tuCaoInfos);
+        List<TuCaoInfo> tuCaoInfos = tuCaoDao.queryPage(baseSearchInfo);
+
         basePageInfo.setData(tuCaoInfos);
         return basePageInfo;
     }
@@ -79,11 +79,20 @@ public class TuCaoServiceImpl implements ITuCaoService {
 
     @Override
     public BasePageInfo<TuCaoInfo> queryBasePageInfo(HttpServletRequest request) {
+        BasePageInfo<TuCaoInfo> basePageInfo = new BasePageInfo<>();
+        String pageIndex = request.getParameter("pageIndex");
+        BaseSearchInfo<TuCaoInfo> baseSearchInfo = new BaseSearchInfo<>();
+        baseSearchInfo.setPageIndex(StringUtils.isBlank(pageIndex)?1:(Integer.parseInt(pageIndex)-1)*baseSearchInfo.getPageSize());
+
+        int totalCount = tuCaoDao.queryTotalCount(baseSearchInfo.getT());
+        List<TuCaoInfo> tuCaoInfos = tuCaoDao.queryPage(baseSearchInfo);
+
+        basePageInfo.setData(tuCaoInfos);
 
 
 
 
-        return null;
+        return basePageInfo;
     }
 
     @Override

@@ -31,7 +31,7 @@ public class ContentVsFileDaoImpl extends SqlSessionDaoSupport implements IConte
     }
 
     @Override
-    public List<ContentVsFileInfo> queryList(BaseSearchInfo<ContentVsFileInfo> baseSearchInfo) {
+    public List<ContentVsFileInfo> queryPage(BaseSearchInfo<ContentVsFileInfo> baseSearchInfo) {
         return null;
     }
 

@@ -14,7 +14,7 @@ public interface IDao<T> {
 
     public int save(T t);
 
-    public List<T>  queryList(BaseSearchInfo<T> baseSearchInfo);
+    public List<T>  queryPage(BaseSearchInfo<T> baseSearchInfo);
 
     public int queryTotalCount(T t);
 

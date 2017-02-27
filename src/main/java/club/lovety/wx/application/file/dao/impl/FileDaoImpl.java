@@ -31,7 +31,7 @@ public class FileDaoImpl extends SqlSessionDaoSupport implements IFileDao {
     }
 
     @Override
-    public List<FileInfo> queryList(BaseSearchInfo<FileInfo> baseSearchInfo) {
+    public List<FileInfo> queryPage(BaseSearchInfo<FileInfo> baseSearchInfo) {
         return null;
     }
 
@@ -43,5 +43,10 @@ public class FileDaoImpl extends SqlSessionDaoSupport implements IFileDao {
     @Override
     public FileInfo view(long uid) {
         return null;
+    }
+
+    @Override
+    public List<FileInfo> queryFileByContentId(long contentId) {
+        return this.getSqlSession().selectList("FileInfo.queryFileByContentId",contentId);
     }
 }
