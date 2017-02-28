@@ -2,6 +2,7 @@ package club.lovety.wx.application.tucao.service.impl;
 
 import club.lovety.wx.application.contentvsfile.dao.IContentVsFileDao;
 import club.lovety.wx.application.contentvsfile.entity.ContentVsFileInfo;
+import club.lovety.wx.application.file.dao.IFileDao;
 import club.lovety.wx.application.tucao.dao.ITuCaoDao;
 import club.lovety.wx.application.tucao.entity.TuCaoInfo;
 import club.lovety.wx.application.tucao.service.ITuCaoService;
@@ -32,6 +33,9 @@ public class TuCaoServiceImpl implements ITuCaoService {
 
     @Resource
     private IContentVsFileDao contentVsFileDao;
+
+    @Resource
+    private IFileDao fileDao;
 
     @Transactional(rollbackFor = Exception.class)
     @Override
@@ -82,16 +86,18 @@ public class TuCaoServiceImpl implements ITuCaoService {
         BasePageInfo<TuCaoInfo> basePageInfo = new BasePageInfo<>();
         String pageIndex = request.getParameter("pageIndex");
         BaseSearchInfo<TuCaoInfo> baseSearchInfo = new BaseSearchInfo<>();
-        baseSearchInfo.setPageIndex(StringUtils.isBlank(pageIndex)?1:(Integer.parseInt(pageIndex)-1)*baseSearchInfo.getPageSize());
+        baseSearchInfo.setPageIndex(StringUtils.isBlank(pageIndex) ? 0: (Integer.parseInt(pageIndex) - 1) * baseSearchInfo.getPageSize());
 
         int totalCount = tuCaoDao.queryTotalCount(baseSearchInfo.getT());
         List<TuCaoInfo> tuCaoInfos = tuCaoDao.queryPage(baseSearchInfo);
-
+        for (TuCaoInfo tuCaoInfo : tuCaoInfos) {
+            List<String> imageUrls = fileDao.queryFileByContentId(tuCaoInfo.getUid());
+            tuCaoInfo.setFileUrls(imageUrls);
+            tuCaoInfo.setFileUrlSize(imageUrls.size());
+        }
         basePageInfo.setData(tuCaoInfos);
-
-
-
-
+        basePageInfo.setTotalCount(totalCount);
+        basePageInfo.setPageIndex(Integer.parseInt(pageIndex));
         return basePageInfo;
     }
 

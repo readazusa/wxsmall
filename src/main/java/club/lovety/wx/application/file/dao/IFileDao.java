@@ -14,5 +14,5 @@ import java.util.List;
 public interface IFileDao extends IDao<FileInfo> {
 
 
-    public List<FileInfo> queryFileByContentId(long contentId);
+    public List<String> queryFileByContentId(long contentId);
 }

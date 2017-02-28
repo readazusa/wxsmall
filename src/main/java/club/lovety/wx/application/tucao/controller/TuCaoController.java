@@ -4,6 +4,7 @@ import club.lovety.wx.application.tucao.entity.TuCaoInfo;
 import club.lovety.wx.application.tucao.service.ITuCaoService;
 import club.lovety.wx.base.controller.BaseController;
 
+import club.lovety.wx.base.entity.BasePageInfo;
 import club.lovety.wx.common.Result;
 import org.apache.commons.logging.Log;
 import org.apache.logging.log4j.LogManager;
@@ -32,8 +33,16 @@ public class TuCaoController extends BaseController {
 
     @RequestMapping("page")
     public Object  page(HttpServletRequest request){
-//        tuCaoService.queryBasePageInfo()
-        return null;
+        Result result =  new Result();
+        try{
+            BasePageInfo<TuCaoInfo> basePageInfo = tuCaoService.queryBasePageInfo(request);
+            result.setData(basePageInfo);
+        }catch (Exception ex){
+            log.error("展示吐槽列表失败: ",ex);
+            result.setCode("00001");
+            result.setMsg(ex.getMessage());
+        }
+        return result;
     }
 
     @RequestMapping("add")

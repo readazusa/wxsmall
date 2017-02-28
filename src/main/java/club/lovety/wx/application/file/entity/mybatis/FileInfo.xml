@@ -9,8 +9,8 @@
         VALUES(#{uid},#{url},#{contentType},#{size},#{suffix},#{name},#{ip},#{tempFilePath},#{type},#{createTime},#{updateTime},now())
     </insert>
 
-    <select id="queryFileByContentId" resultType="FileInfo" parameterType="java.lang.Long">
-        select f.url from t_wxsmall_file f inner JOIN  t_wxsmall_content_vs_file t on f.id = t.fileid where t.contentid = #{contentId}
+    <select id="queryFileByContentId" resultType="java.lang.String" parameterType="java.lang.Long">
+        select f.url from t_wxsmall_file f inner JOIN  t_wxsmall_content_vs_file t on f.uid = t.fileid where t.contentid = #{contentId}
     </select>
 
 

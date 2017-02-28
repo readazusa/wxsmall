@@ -12,11 +12,13 @@ public class BasePageInfo<T> {
 
     private List<T> data;
 
-    private int pageSize;
+    private int pageSize = 10 ;
 
     private int pageIndex;
 
     private int totalCount;
+
+    private int totalPage;
 
     public List<T> getData() {
         return data;
@@ -48,5 +50,16 @@ public class BasePageInfo<T> {
 
     public void setTotalCount(int totalCount) {
         this.totalCount = totalCount;
+    }
+
+    public int getTotalPage() {
+        if(totalCount>0){
+            totalPage = totalCount%pageSize ==0?totalCount/pageSize:totalCount/pageSize+1;
+        }
+        return totalPage;
+    }
+
+    public void setTotalPage(int totalPage) {
+        this.totalPage = totalPage;
     }
 }

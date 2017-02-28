@@ -33,12 +33,12 @@ public class TuCaoDaoImpl extends SqlSessionDaoSupport implements ITuCaoDao {
 
     @Override
     public List<TuCaoInfo> queryPage(BaseSearchInfo<TuCaoInfo> baseSearchInfo) {
-        return null;
+        return this.getSqlSession().selectList("TuCaoInfo.queryPage",baseSearchInfo);
     }
 
     @Override
     public int queryTotalCount(TuCaoInfo tuCaoInfo) {
-        return 0;
+        return this.getSqlSession().selectOne("TuCaoInfo.queryTotalCount",tuCaoInfo);
     }
 
     @Override

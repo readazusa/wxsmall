@@ -46,7 +46,7 @@ public class FileDaoImpl extends SqlSessionDaoSupport implements IFileDao {
     }
 
     @Override
-    public List<FileInfo> queryFileByContentId(long contentId) {
+    public List<String> queryFileByContentId(long contentId) {
         return this.getSqlSession().selectList("FileInfo.queryFileByContentId",contentId);
     }
 }
