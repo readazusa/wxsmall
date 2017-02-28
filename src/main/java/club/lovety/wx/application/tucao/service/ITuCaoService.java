@@ -19,4 +19,6 @@ public interface ITuCaoService extends IService<TuCaoInfo> {
     public BasePageInfo<TuCaoInfo> queryBasePageInfo(HttpServletRequest request);
 
 
+
+
 }

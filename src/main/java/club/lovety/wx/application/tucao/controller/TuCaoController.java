@@ -9,9 +9,7 @@ import club.lovety.wx.common.Result;
 import org.apache.commons.logging.Log;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -58,5 +56,22 @@ public class TuCaoController extends BaseController {
         }
         return result;
     }
+
+
+    @RequestMapping("view")
+    public Object doView(@RequestParam("uid") long uid){
+        Result result = new Result();
+        try{
+            TuCaoInfo tuCaoInfo = tuCaoService.view(uid);
+            result.setData(tuCaoInfo);
+        }catch (Exception ex){
+            log.error("查看吐槽信息失败,失败信息: ",ex);
+            result.setMsg(ex.getMessage());
+            result.setCode("000001");
+        }
+        return result;
+    }
+
+
 
 }

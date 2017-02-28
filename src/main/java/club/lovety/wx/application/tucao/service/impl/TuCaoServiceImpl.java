@@ -75,7 +75,6 @@ public class TuCaoServiceImpl implements ITuCaoService {
         basePageInfo.setPageIndex(baseSearchInfo.getPageIndex());
         int totalCount = tuCaoDao.queryTotalCount(baseSearchInfo.getT());
         List<TuCaoInfo> tuCaoInfos = tuCaoDao.queryPage(baseSearchInfo);
-
         basePageInfo.setData(tuCaoInfos);
         return basePageInfo;
     }
@@ -103,6 +102,9 @@ public class TuCaoServiceImpl implements ITuCaoService {
 
     @Override
     public TuCaoInfo view(long uid) {
-        return null;
+        TuCaoInfo tuCaoInfo = tuCaoDao.view(uid);
+        List<String> imageUrls = fileDao.queryFileByContentId(uid);
+        tuCaoInfo.setFileUrls(imageUrls);
+        return tuCaoInfo;
     }
 }

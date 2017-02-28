@@ -43,6 +43,6 @@ public class TuCaoDaoImpl extends SqlSessionDaoSupport implements ITuCaoDao {
 
     @Override
     public TuCaoInfo view(long uid) {
-        return null;
+        return this.getSqlSession().selectOne("TuCaoInfo.view",uid);
     }
 }

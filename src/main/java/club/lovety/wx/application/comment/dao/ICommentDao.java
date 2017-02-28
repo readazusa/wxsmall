@@ -10,4 +10,8 @@ import club.lovety.wx.base.dao.IDao;
  * des:
  */
 public interface ICommentDao extends IDao<CommentInfo> {
+
+    public int queryTotalCount(long relationUid) ;
+
+
 }

@@ -10,6 +10,7 @@ import club.lovety.wx.base.entity.BaseInfo;
  */
 public class CommentInfo extends BaseInfo {
 
+
     private long relationUid;
 
     private int type;  //评价的内容类型 0：宝宝秀，1:吐槽吧
@@ -22,8 +23,9 @@ public class CommentInfo extends BaseInfo {
 
     private String avatarUrl;  //头像
 
-
     private long parentUid;  //
+
+    private String ip;
 
     public long getRelationUid() {
         return relationUid;
@@ -79,5 +81,13 @@ public class CommentInfo extends BaseInfo {
 
     public void setParentUid(long parentUid) {
         this.parentUid = parentUid;
+    }
+
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
     }
 }

@@ -22,6 +22,10 @@
     </select>
 
 
+    <select id="view" parameterType="java.lang.Long"  resultType="TuCaoInfo">
+        select <include refid="param"/> from t_wxsmall_tucao where uid = #{uid}
+    </select>
+
 
 
 

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CommentInfo">
+
+    <insert id="save" parameterType="CommentInfo">
+        insert into t_wxsmall_comment(uid,relationUid,type,laudcount,content,nickName,avatarUrl,parentUid,ip,createtime,updatetime,syscreatetime)
+        VALUES (#{uid},#{relationUid},#{type},#{laudCount},#{content},#{nickName},#{avatarUrl},#{parentUid},#{ip},#{createTime},#{updateTime},now())
+    </insert>
+
+    <select id="queryPage" parameterType="BaseSearchInfo" resultType="CommentInfo">
+        select * from t_wxsmall_comment
+        where relationUid = #{relationUid} limit #{pageIndex},#{pageSize}
+    </select>
+
+    <select id="queryTotalCount" resultType="java.lang.Integer" parameterType="java.lang.Long">
+        select count(1) from t_wxsmall_comment where relationUid = #{relationUid}
+    </select>
+</mapper>
