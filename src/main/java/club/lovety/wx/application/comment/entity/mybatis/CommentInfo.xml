@@ -11,7 +11,7 @@
 
     <select id="queryPage" parameterType="BaseSearchInfo" resultType="CommentInfo">
         select * from t_wxsmall_comment
-        where relationUid = #{relationUid} limit #{pageIndex},#{pageSize}
+        where relationUid = #{t.relationUid} order by createtime desc  limit #{pageIndex},#{pageSize}
     </select>
 
     <select id="queryTotalCount" resultType="java.lang.Integer" parameterType="java.lang.Long">
