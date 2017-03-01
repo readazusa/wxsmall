@@ -10,11 +10,33 @@
     </insert>
 
     <select id="queryPage" parameterType="BaseSearchInfo" resultType="CommentInfo">
-        select * from t_wxsmall_comment
+        select nickName,createtime,uid,laudcount,content,avatarUrl,parentUid,(select count(1) from t_wxsmall_comment where parentUid =uid ) commentCount from t_wxsmall_comment
         where relationUid = #{t.relationUid} order by createtime desc  limit #{pageIndex},#{pageSize}
     </select>
 
     <select id="queryTotalCount" resultType="java.lang.Integer" parameterType="java.lang.Long">
         select count(1) from t_wxsmall_comment where relationUid = #{relationUid}
     </select>
+
+    <insert id="saveLaud" parameterType="CommentVsUser">
+        insert into t_wxsmall_comment_vs_user(uid,commentId,nickname,createtime,updatetime,syscreatetime)
+        VALUES(#{uid},#{commentId},#{nickName},#{createTime},#{updateTime},now())
+    </insert>
+
+    <select id="deleteLaud" parameterType="CommentVsUser">
+        delete from t_wxsmall_comment_vs_user where commentid = #{commentId} and nickname = #{nickName}
+    </select>
+
+    <select id="queryLaudCountCommentByNickname" parameterType="CommentVsUser" resultType="java.lang.Integer">
+        select count(1) from t_wxsmall_comment_vs_user where commentid = #{commentId} and nickname = #{nickName}
+    </select>
+
+    <update id="updateCommentLaudCount" parameterType="java.util.Map">
+        update t_wxsmall_comment set laudcount = laudcount + #{laudCount} where uid = #{uid}
+    </update>
+
+
+
+
+
 </mapper>

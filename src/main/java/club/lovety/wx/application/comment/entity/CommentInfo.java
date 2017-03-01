@@ -1,6 +1,7 @@
 package club.lovety.wx.application.comment.entity;
 
 import club.lovety.wx.base.entity.BaseInfo;
+import org.apache.commons.lang3.time.DateFormatUtils;
 
 /**
  * Created by 念梓  on 2017/2/14.
@@ -26,6 +27,12 @@ public class CommentInfo extends BaseInfo {
     private long parentUid;  //
 
     private String ip;
+
+    private String dateStr;
+
+    private int commentCount;  //评论的数量
+
+    private int hasLaud; //是否已经评论  0:未评论 ,其他已经评论
 
     public long getRelationUid() {
         return relationUid;
@@ -89,5 +96,29 @@ public class CommentInfo extends BaseInfo {
 
     public void setIp(String ip) {
         this.ip = ip;
+    }
+
+    public String getDateStr() {
+        return DateFormatUtils.format(this.getCreateTime(),"MM-dd HH:mm");
+    }
+
+    public void setDateStr(String dateStr) {
+        this.dateStr = dateStr;
+    }
+
+    public int getCommentCount() {
+        return commentCount;
+    }
+
+    public void setCommentCount(int commentCount) {
+        this.commentCount = commentCount;
+    }
+
+    public int getHasLaud() {
+        return hasLaud;
+    }
+
+    public void setHasLaud(int hasLaud) {
+        this.hasLaud = hasLaud;
     }
 }

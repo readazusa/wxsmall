@@ -9,7 +9,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -56,6 +55,19 @@ public class CommentController  extends BaseController{
         }
         return result;
     }
+
+    @RequestMapping("updatelaudcount")
+    public Object updateLaudCount(HttpServletRequest request){
+        Result result = new Result();
+        try{
+            commentService.updateCommentLaudCount(request);
+        }catch (Exception ex){
+
+        }
+        return result;
+    }
+
+
 
 
 }

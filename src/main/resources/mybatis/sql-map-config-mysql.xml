@@ -17,6 +17,9 @@
         <typeAlias type="club.lovety.wx.application.file.entity.FileInfo" alias="FileInfo" />
         <typeAlias type="club.lovety.wx.application.contentvsfile.entity.ContentVsFileInfo" alias="ContentVsFileInfo"/>
         <typeAlias type="club.lovety.wx.application.comment.entity.CommentInfo" alias="CommentInfo"/>
+        <typeAlias type="club.lovety.wx.application.comment.entity.CommentVsUser" alias="CommentVsUser"/>
+
+
     </typeAliases>
 
     <mappers>
