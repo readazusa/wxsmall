@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("comment")
 public class CommentController  extends BaseController{
 
+
     private static final Logger log = LogManager.getLogger(CommentController.class);
 
     @Resource
@@ -62,12 +63,7 @@ public class CommentController  extends BaseController{
         try{
             commentService.updateCommentLaudCount(request);
         }catch (Exception ex){
-
         }
         return result;
     }
-
-
-
-
 }

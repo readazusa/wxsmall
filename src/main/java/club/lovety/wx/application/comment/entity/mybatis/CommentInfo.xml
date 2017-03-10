@@ -10,7 +10,7 @@
     </insert>
 
     <select id="queryPage" parameterType="BaseSearchInfo" resultType="CommentInfo">
-        select nickName,createtime,uid,laudcount,content,avatarUrl,parentUid,(select count(1) from t_wxsmall_comment where parentUid =uid ) commentCount from t_wxsmall_comment
+        select comment.nickName,comment.createtime,comment.uid,comment.laudcount,comment.content,comment.avatarUrl,comment.parentUid,(select count(1) from t_wxsmall_comment where parentUid =comment.uid ) commentCount from t_wxsmall_comment comment
         where relationUid = #{t.relationUid} order by createtime desc  limit #{pageIndex},#{pageSize}
     </select>
 
