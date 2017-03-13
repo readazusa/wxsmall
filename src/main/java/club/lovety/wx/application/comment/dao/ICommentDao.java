@@ -4,6 +4,7 @@ import club.lovety.wx.application.comment.entity.CommentInfo;
 import club.lovety.wx.application.comment.entity.CommentVsUser;
 import club.lovety.wx.base.dao.IDao;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -32,4 +33,7 @@ public interface ICommentDao extends IDao<CommentInfo> {
      * @return
      */
     public int updateCommentLaudCount(Map<String,Object> param);
+
+    public List<CommentInfo>  loadCommentInfoByParentId(long uid);
+
 }

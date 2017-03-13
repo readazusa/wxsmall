@@ -7,6 +7,7 @@ import club.lovety.wx.base.entity.BaseSearchInfo;
 import club.lovety.wx.base.service.IService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -35,4 +36,8 @@ public interface ICommentService extends IService<CommentInfo> {
      * @return
      */
     public int updateCommentLaudCount(HttpServletRequest request);
+
+
+
+    public List<CommentInfo> loadCommentInfoByParentId(long uid);
 }

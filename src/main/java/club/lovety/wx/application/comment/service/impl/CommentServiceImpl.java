@@ -106,4 +106,9 @@ public class CommentServiceImpl implements ICommentService {
         }
         return this.commentDao.updateCommentLaudCount(target);
     }
+
+    @Override
+    public List<CommentInfo> loadCommentInfoByParentId(long uid) {
+        return this.commentDao.loadCommentInfoByParentId(uid);
+    }
 }

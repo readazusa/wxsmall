@@ -9,10 +9,12 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * Created by 念梓  on 2017/2/28.
@@ -63,7 +65,24 @@ public class CommentController  extends BaseController{
         try{
             commentService.updateCommentLaudCount(request);
         }catch (Exception ex){
+            log.error("更新赞的数量失败: ",ex);
         }
         return result;
     }
+
+
+    @RequestMapping("loadcommentbyparentid")
+    public Object loadCommentByParentId(@RequestParam("uid") long uid){
+        Result result = new Result();
+        try{
+            List<CommentInfo> commentInfoList = commentService.loadCommentInfoByParentId(uid);
+            result.setData(commentInfoList);
+        }catch (Exception ex){
+            log.error("获取子评论数据失败: ",ex);
+            result.setCode("00001");
+            result.setMsg(ex.getMessage());
+        }
+        return result;
+    }
+
 }

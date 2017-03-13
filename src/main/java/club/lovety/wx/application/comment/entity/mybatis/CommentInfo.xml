@@ -35,8 +35,9 @@
         update t_wxsmall_comment set laudcount = laudcount + #{laudCount} where uid = #{uid}
     </update>
 
-
-
+    <select id="loadCommentInfoByParentId" parameterType="java.lang.Long" resultType="CommentInfo">
+        select t.nickName,t.content,t.avatarUrl,t.uid,t.createtime from t_wxsmall_comment t where t.parentUid=#{uid} order by t.createtime desc
+    </select>
 
 
 </mapper>

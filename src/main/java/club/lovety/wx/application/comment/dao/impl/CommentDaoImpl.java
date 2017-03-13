@@ -71,4 +71,9 @@ public class CommentDaoImpl extends SqlSessionDaoSupport implements ICommentDao 
     public int updateCommentLaudCount(Map<String, Object> param) {
         return this.getSqlSession().update("CommentInfo.updateCommentLaudCount",param);
     }
+
+    @Override
+    public List<CommentInfo> loadCommentInfoByParentId(long uid) {
+        return this.getSqlSession().selectList("CommentInfo.loadCommentInfoByParentId",uid);
+    }
 }
