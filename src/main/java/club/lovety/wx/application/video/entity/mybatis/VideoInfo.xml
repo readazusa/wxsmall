@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="VideoInfo">
+    <sql id="param">
+        uid,content,ip,nickName,actualLatitude,actualLongitude,latitude,longitude,locationName,locationAddress,createTime,updateTime
+    </sql>
+
+    <insert id="save" parameterType="VideoInfo">
+        insert into t_wxsmall_video(uid,content,nickName,actualLatitude,actualLongitude,latitude,longitude,locationName,locationAddress,createTime,updateTime,syscreatetime)
+         values(#{uid},#{content},#{ip},#{nickName},#{actualLatitude},#{actualLongitude},#{latitude},#{longitude},#{locationName},#{locationAddress},#{createTime},#{updateTime},now())
+    </insert>
+
+    <select id="queryPage" parameterType="BaseSearchInfo" resultType="VideoInfo">
+        select <include refid="param"/> from t_wxsmall_video order by createTime desc  limit #{pageIndex},#{pageSize}
+    </select>
+
+    <select id="queryTotalCount" parameterType="VideoInfo" resultType="java.lang.Integer">
+        select count(1) from t_wxsmall_video
+    </select>
+
+
+    <select id="view" parameterType="java.lang.Long"  resultType="VideoInfo">
+        select <include refid="param"/> from t_wxsmall_video where uid = #{uid}
+    </select>
+
+
+</mapper>

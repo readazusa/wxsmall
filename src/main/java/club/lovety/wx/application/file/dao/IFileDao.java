@@ -15,4 +15,7 @@ public interface IFileDao extends IDao<FileInfo> {
 
 
     public List<String> queryFileByContentId(long contentId);
+
+    public String queryFileUrlByContentId(long contentId);
+
 }

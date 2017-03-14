@@ -1,5 +1,8 @@
 package club.lovety.wx.base.controller;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -10,7 +13,12 @@ import javax.servlet.http.HttpServletRequest;
  */
 public abstract  class BaseController {
 
+    private static  final Logger log = LogManager.getLogger(BaseController.class);
+
     public String getRequestIp(HttpServletRequest request){
+
+
+
         String ip = request.getHeader("x-forwarded-for") == null ? request.getRemoteAddr() : request.getHeader("x-forwarded-for");
         return ip;
     }
