@@ -18,7 +18,7 @@
         <typeAlias type="club.lovety.wx.application.contentvsfile.entity.ContentVsFileInfo" alias="ContentVsFileInfo"/>
         <typeAlias type="club.lovety.wx.application.comment.entity.CommentInfo" alias="CommentInfo"/>
         <typeAlias type="club.lovety.wx.application.comment.entity.CommentVsUser" alias="CommentVsUser"/>
-        <typeAlias type=" club.lovety.wx.application.video.entity.VideoInfo" alias="VideoInfo"/>
+        <typeAlias type="club.lovety.wx.application.video.entity.VideoInfo" alias="VideoInfo"/>
     </typeAliases>
 
     <mappers>
@@ -26,7 +26,7 @@
         <mapper resource="club/lovety/wx/application/file/entity/mybatis/FileInfo.xml"></mapper>
         <mapper resource="club/lovety/wx/application/contentvsfile/entity/mybatis/ContentVsFileInfo.xml"/>
         <mapper resource="club/lovety/wx/application/comment/entity/mybatis/CommentInfo.xml"/>
-        <mapper resource=" club/lovety/wx/application/video/entity/mybatis/VideoInfo.xml"/>
+        <mapper resource="club/lovety/wx/application/video/entity/mybatis/VideoInfo.xml"/>
     </mappers>
 
 </configuration>

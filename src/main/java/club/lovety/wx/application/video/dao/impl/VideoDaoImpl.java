@@ -27,21 +27,22 @@ public class VideoDaoImpl extends SqlSessionDaoSupport implements IVideoDao {
 
     @Override
     public int save(VideoInfo videoInfo) {
-        return 0;
+        return this.getSqlSession().insert("VideoInfo.save",videoInfo);
     }
 
     @Override
     public List<VideoInfo> queryPage(BaseSearchInfo<VideoInfo> baseSearchInfo) {
-        return null;
+        return this.getSqlSession().selectList("VideoInfo.queryPage",baseSearchInfo);
     }
 
     @Override
     public int queryTotalCount(VideoInfo videoInfo) {
-        return 0;
+        return this.getSqlSession().selectOne("VideoInfo.queryTotalCount",videoInfo);
     }
 
     @Override
     public VideoInfo view(long uid) {
-        return null;
+        List<VideoInfo> videoInfos = this.getSqlSession().selectList("VideoInfo.view",uid);
+        return videoInfos.size()>0?videoInfos.get(0):null;
     }
 }

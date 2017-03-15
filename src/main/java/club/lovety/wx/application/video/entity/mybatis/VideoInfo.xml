@@ -8,7 +8,7 @@
     </sql>
 
     <insert id="save" parameterType="VideoInfo">
-        insert into t_wxsmall_video(uid,content,nickName,actualLatitude,actualLongitude,latitude,longitude,locationName,locationAddress,createTime,updateTime,syscreatetime)
+        insert into t_wxsmall_video(uid,content,ip,nickName,actualLatitude,actualLongitude,latitude,longitude,locationName,locationAddress,createTime,updateTime,syscreatetime)
          values(#{uid},#{content},#{ip},#{nickName},#{actualLatitude},#{actualLongitude},#{latitude},#{longitude},#{locationName},#{locationAddress},#{createTime},#{updateTime},now())
     </insert>
 

@@ -7,10 +7,10 @@ import club.lovety.wx.base.entity.BasePageInfo;
 import club.lovety.wx.common.Result;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletRequest;
  * des:
  */
 
-@Controller
+@RestController
 @RequestMapping("video")
 public class VideoController extends BaseController {
 
@@ -33,6 +33,7 @@ public class VideoController extends BaseController {
 
     @RequestMapping("page")
     public Object  page(HttpServletRequest request){
+
         Result result =  new Result();
         try{
             BasePageInfo<VideoInfo> basePageInfo = videoService.queryBasePageInfo(request);

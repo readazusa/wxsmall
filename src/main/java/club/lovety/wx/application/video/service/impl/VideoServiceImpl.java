@@ -62,7 +62,6 @@ public class VideoServiceImpl implements IVideoService {
         VideoInfo videoInfo = videoDao.view(uid);
         String imageUrl = fileDao.queryFileUrlByContentId(uid);
         videoInfo.setImageUrl(imageUrl);
-
         return videoInfo;
     }
 
